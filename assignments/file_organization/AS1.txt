@@ -1,0 +1,205 @@
+// FILE ORGANIZATION ASSIGNMENTS 1.1 - 1.3
+---------Task 1.1------
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main() {
+
+    ifstream file;
+    file.open("fileName.txt");
+    char c;
+    while (!file.eof()) {
+        file.get(c);
+        cout << c;
+    }
+    cout << endl;
+
+    file.close();
+    system("pause");
+    return 0;
+}
+
+
+---------Task 1.2------
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+using namespace std;
+int main() {
+
+
+
+    ifstream file;
+    file.open("fileName.txt");
+    string s;
+
+    map<string, int> words;
+
+    while (!file.eof()) {
+        file >> s;
+        cout << s << " ";
+        words[s]++;
+    }
+    cout << endl;
+
+    for (auto i : words) {
+        cout << i.first << " : " << i.second << endl;
+    }
+
+    file.close();
+    system("pause");
+    return 0;
+}
+
+---wrong ^^
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <map>
+using namespace std;
+int main() {
+
+
+
+    ifstream file;
+    file.open("fileName.txt");
+    string s;
+
+    int i = 0;
+    while (!file.eof()) {
+        file >> s;
+        cout << s << "(" << i << ")" << " ";
+        i++;
+    }
+    cout << endl << "total words = " << i << endl;
+
+    file.close();
+    system("pause");
+    return 0;
+}
+
+---------Task 1.3------
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main() {
+
+
+
+    ifstream file;
+    file.open("fileName.txt");
+    string s;
+
+    int i = 0;
+    while (!file.eof()) {
+        getline(file,s);
+        cout << s << "(" << i << ")" << endl;
+        i++;
+    }
+    cout << endl << "total lines = " << i << endl;
+
+    file.close();
+    system("pause");
+    return 0;
+}
+
+
+---------all------
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+// Function to read file till EOF using eof()
+void ex1readFileWordByWord(string fileName) {
+    fstream file;
+    file.open(fileName, ios::in);
+    if (file.good()) {
+        string l;
+        cout << "----- File Content -----\n";
+        while (!file.eof()) {
+            getline(file, l);
+            cout << l << endl;
+        }
+    }
+    file.close();
+
+}
+
+// Function to count all characters using get(ch)
+void ex1countCharacters(string fileName) {
+    ifstream file;
+    file.open(fileName);
+
+    if (file) {
+        char c;
+
+        int i = 0;
+        while (!file.eof()) {
+            file >> c;
+            cout << c << "(" << i << ")" << " ";
+            i++;
+        }
+        cout << endl << "total words = " << i << endl;
+
+        file.close();
+    }
+    file.close();
+
+}
+
+void ex2writeToFile() {
+    fstream file;
+    file.open("file1.txt", ios::out); // Open file for writing
+
+
+    if (file.good()) {
+        char ch;
+        cout << "Enter your text (type '.' to end): " << endl;
+
+        // Read character by character until user enters '.'
+        while (true) {
+            cin.get(ch);
+            file.put(ch);
+            if (ch == '.')
+                break;
+        }
+
+
+    }
+    file.close();
+}
+
+void ex3writeData(string filename) {
+    fstream file;
+    file.open(filename);
+
+
+    if (file.good()) {
+        string name, phone, year;
+
+        cout << "Enter your name: ";
+        getline(cin, name);
+        cout << "Enter your phone number: ";
+        getline(cin, phone);
+        cout << "Enter your academic year: ";
+        getline(cin, year);
+
+        file << "Name: " << name << endl;
+        file << "Phone: " << phone << endl;
+        file << "Academic Year: " << year << endl;
+
+    }
+    file.close();
+}
+
+
+// Main function
+int main() {
+    ex1readFileWordByWord("file1.txt");
+
+    return 0;
+}
