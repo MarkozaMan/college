@@ -35,7 +35,7 @@ void insertion_sort(int* A, int n)
 
 void selection_sort(int* A, int n)
 {
-    for(int i = 0; i<n; i++)
+    for(int i = 0; i<n-2; i++)
     {
         int min = i;
         for(int j = i + 1; j < n; j++)
