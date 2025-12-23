@@ -1,0 +1,9 @@
+git --amend | to fix commit
+git revert | to remove changes from a specific commit
+git reset --hard | to undo permanently (also aparently HEAD~2 means last two commits or smth
+hard resets changes too without you dont
+git stash | to stash shit
+git stash pop | get them back
+git branch
+git checkout -b
+git merge
